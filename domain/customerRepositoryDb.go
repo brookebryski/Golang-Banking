@@ -23,7 +23,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	customers := make([]Customer, 0)
 	for rows.Next() {
 		var c Customer
-		err := rows.Scan(&c.Id, &c.City, &c.Zipcode, &c.DateofBirth, &c.Status)
+		err := rows.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateofBirth, &c.Status)
 		if err != nil {
 			log.Println("Error while scanning customers table " + err.Error())
 			return nil, err
@@ -34,7 +34,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
-	client, err := sql.Open("mysql", "root:codecamp@tcp(localhost:3306)/banking")
+	client, err := sql.Open("mysql", "root:Bb080695@tcp(localhost:3306)/banking")
 	if err != nil {
 		panic(err)
 	}
