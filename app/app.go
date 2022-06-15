@@ -1,16 +1,16 @@
 package app
 
 import (
-	"Golang-Banking"
 	"log"
 	"net/http"
 )
 
 func Start() {
+	mux := http.NewServeMux()
 	// define routes
-	http.HandleFunc("/greet", main.greet)
-	http.HandleFunc("/customers", main.getAllCustomers)
+	mux.HandleFunc("/greet", greet)
+	mux.HandleFunc("/customers", getAllCustomers)
 
 	// starting server
-	log.Fatalln(http.ListenAndServe("localhost:8000", nil))
+	log.Fatalln(http.ListenAndServe("localhost:8000", mux))
 }
