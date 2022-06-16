@@ -1,15 +1,17 @@
 package domain
 
+import "Golang-Banking/errs"
+
 type Customer struct {
-	Id          string
+	Id          string `db:"customer_id"`
 	Name        string
 	City        string
 	Zipcode     string
-	DateofBirth string
+	DateofBirth string `db:"date_of_birth"`
 	Status      string
 }
 
 type CustomerRepository interface {
-	FindAll() ([]Customer, error)
-	ById(string) (*Customer, error)
+	FindAll(status string) ([]Customer, *errs.AppError)
+	ById(string) (*Customer, *errs.AppError)
 }
