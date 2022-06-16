@@ -47,6 +47,14 @@ func (d CustomerRepositoryDb) ById(id string) (*Customer, *errs.AppError) {
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
+	//dbUser := os.Getenv("DB_USER")
+	//dbPasswd := os.Getenv("DB_PASSWD")
+	//dbAddr := os.Getenv("DB_ADDR")
+	//dbPort := os.Getenv("DB_PORT")
+	//dbName := os.Getenv("DB_NAME")
+
+	//dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/$s", dbUser, dbPasswd, dbAddr, dbPort, dbName)
+	//client, err := sqlx.Open("mysql", dataSource)
 	client, err := sqlx.Open("mysql", "root:Bb080695@tcp(localhost:3306)/banking")
 	if err != nil {
 		panic(err)
